@@ -16,6 +16,7 @@ use JustinMoh\BackpackHelper\Facades\CrudFieldFacade;
 use JustinMoh\BackpackHelper\Facades\CrudFilterFacade;
 use JustinMoh\BackpackHelper\Facades\Fields\DatePickerField;
 use JustinMoh\BackpackHelper\Facades\Fields\DatetimePickerField;
+use JustinMoh\BackpackHelper\Facades\Fields\EmailField;
 use JustinMoh\BackpackHelper\Facades\Fields\HiddenField;
 use JustinMoh\BackpackHelper\Facades\Fields\NumberField;
 use JustinMoh\BackpackHelper\Facades\Fields\RadioField;
@@ -169,6 +170,12 @@ class BackpackHelperServiceProvider extends ServiceProvider
             DatetimePickerField::class,
             function () {
                 return new CrudField('datetime_picker');
+            }
+        );
+        $this->app->bind(
+            EmailField::class,
+            function () {
+                return new CrudField('email');
             }
         );
         $this->app->bind(

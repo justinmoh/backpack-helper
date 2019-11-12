@@ -1,6 +1,6 @@
 {
     "name": "justinmoh/backpack-helper",
-    "description": "Helper for Laravel-Backpack",
+    "description": "A helper package for Laravel-Backpack CRUD that allows using CRUD components as chained method.",
     "license": "MIT",
     "authors": [
         {
@@ -10,7 +10,7 @@
         }
     ],
     "homepage": "https://github.com/justinmoh/backpack-helper",
-    "keywords": ["Laravel", "backpack-helper", "Laravel-Backpack"],
+    "keywords": ["Laravel", "backpack-helper", "Laravel-Backpack", "Laravel-Backpack CRUD"],
     "require": {
         "php": "^7.3",
         "illuminate/support": "~6",
