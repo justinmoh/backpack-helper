@@ -76,6 +76,7 @@ class CrudField extends CrudHelper
             'todayBtn' => 'linked',
             'todayHighlight' => true,
             'autoclose' => true,
+            'clearBtn' => true,
         ];
 
         $this->mergeConfigs(
