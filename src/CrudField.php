@@ -15,39 +15,39 @@ class CrudField extends CrudHelper
             ? ['class' => 'form-group col-md-'.$this->width]
             : [];
 
-        if (in_array($this->type, ['upload_multiple'])) {
-            $this->mergeConfigs(['upload' => true]);
-            $defaultWrapperAttrs = array_merge(
-                $defaultWrapperAttrs,
-                [
-                    'data-init-function' => 'bpFieldInitUploadMultipleElement',
-                    'data-field-name' => $this->name,
-                ]
-            );
-        }
+//        if (in_array($this->type, ['upload_multiple'])) {
+//            $this->mergeConfigs(['upload' => true]);
+//            $defaultWrapperAttrs = array_merge(
+//                $defaultWrapperAttrs,
+//                [
+//                    'data-init-function' => 'bpFieldInitUploadMultipleElement',
+//                    'data-field-name' => $this->name,
+//                ]
+//            );
+//        }
 
         $this->mergeWrapperAttributes($defaultWrapperAttrs);
 
-        if ($this->type === 'datetime_picker') {
-            $this->datetimePickerOptions([]);
+        switch (strtolower($this->type)) {
+            case 'datetime_picker':
+                $this->datetimePickerOptions([]);
+                break;
+            case 'date_picker':
+                $this->datePickerOptions();
+                break;
+            case 'textarea':
+                $this->rows(5);
+                break;
+            case 'upload_multiple':
+                $this->mergeConfigs(['upload' => true]);
+                $this->mergeWrapperAttributes(
+                    [
+                        'data-init-function' => 'bpFieldInitUploadMultipleElement',
+                        'data-field-name' => $this->name,
+                    ]
+                );
+                break;
         }
-
-        if ($this->type === 'textarea') {
-            $this->rows(5);
-        }
-    }
-
-
-    /**
-     * @param $options
-     *
-     * @return $this
-     */
-    public function datePickerOptions($options)
-    {
-        $this->mergeConfigs(['date_picker_options' => $options]);
-
-        return $this;
     }
 
 
@@ -56,7 +56,7 @@ class CrudField extends CrudHelper
      *
      * @return $this
      */
-    public function rows(int $rows)
+    public function rows(int $rows = 5)
     {
         $this->mergeAttributes(['rows' => $rows]);
 
@@ -69,12 +69,37 @@ class CrudField extends CrudHelper
      *
      * @return $this
      */
-    public function datetimePickerOptions($options)
+    public function datePickerOptions($options = [])
     {
-        $datetimePickerOptions = ['format' => 'YYYY-MM-DD HH:mm'];
+        $defaultDatePickerOptions = [
+            'format' => 'yyyy-mm-dd',
+            'todayBtn' => 'linked',
+            'todayHighlight' => true,
+            'autoclose' => true,
+        ];
 
         $this->mergeConfigs(
-            ['datetime_picker_options' => array_merge($datetimePickerOptions, $options)]
+            ['date_picker_options' => array_merge($defaultDatePickerOptions, $options)]
+        );
+
+        return $this;
+    }
+
+
+    /**
+     * @param $options
+     *
+     * @return $this
+     */
+    public function datetimePickerOptions($options)
+    {
+        $defaultDatetimePickerOptions = ['format' => 'YYYY-MM-DD HH:mm'];
+
+        $this->mergeConfigs(
+            [
+                'datetime_picker_options' =>
+                    array_merge($defaultDatetimePickerOptions, $options),
+            ]
         );
 
         return $this;
