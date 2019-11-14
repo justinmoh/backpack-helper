@@ -39,7 +39,7 @@ class CrudField extends CrudHelper
                 $this->rows(5);
                 break;
             case 'upload_multiple':
-                $this->mergeConfigs(['upload' => true]);
+                $this->mergeConfigs(['upload' => true, 'disk' => 'public']);
                 $this->mergeWrapperAttributes(
                     [
                         'data-init-function' => 'bpFieldInitUploadMultipleElement',
