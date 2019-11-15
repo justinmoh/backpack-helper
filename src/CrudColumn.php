@@ -17,6 +17,11 @@ class CrudColumn extends CrudHelper
                 }
             );
         }
+
+        switch (strtolower($this->type)) {
+            case 'upload_multiple':
+                $this->mergeConfigs(['disk' => 'public']);
+        }
     }
 
 

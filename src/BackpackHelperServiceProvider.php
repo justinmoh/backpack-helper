@@ -11,6 +11,7 @@ use JustinMoh\BackpackHelper\Facades\Columns\SelectColumn;
 use JustinMoh\BackpackHelper\Facades\Columns\SelectMultipleColumn;
 use JustinMoh\BackpackHelper\Facades\Columns\TextareaColumn;
 use JustinMoh\BackpackHelper\Facades\Columns\TextColumn;
+use JustinMoh\BackpackHelper\Facades\Columns\UploadMultipleColumn;
 use JustinMoh\BackpackHelper\Facades\CrudColumnFacade;
 use JustinMoh\BackpackHelper\Facades\CrudFieldFacade;
 use JustinMoh\BackpackHelper\Facades\CrudFilterFacade;
@@ -146,6 +147,12 @@ class BackpackHelperServiceProvider extends ServiceProvider
             TextareaColumn::class,
             function () {
                 return new CrudColumn('textarea');
+            }
+        );
+        $this->app->bind(
+            UploadMultipleColumn::class,
+            function () {
+                return new CrudColumn('upload_multiple');
             }
         );
     }
