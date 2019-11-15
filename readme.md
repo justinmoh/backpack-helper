@@ -32,7 +32,7 @@ These is no test written, yet.
 Via Composer
 
 ``` bash
-$ composer require justinmoh/backpack-helper
+$ composer require justinmoh/backpack-helper:~0.2
 ```
 
 ## Usage
