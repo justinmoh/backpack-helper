@@ -57,7 +57,7 @@ trait CrudRequestsHandler
      */
     protected function flashMessageIntoBackpackAlert($message = null): void
     {
-        if ($message !== null) {
+        if (empty($message)) {
             $details = [];
             foreach ($this->crud->getStrippedSaveRequest() as $field => $value) {
                 $value = json_encode($value);
