@@ -1,6 +1,6 @@
 <?php
 
-namespace Justinmoh\BackpackHelper\Traits;
+namespace JustinMoh\BackpackHelper\Traits;
 
 use Alert;
 use DB;
