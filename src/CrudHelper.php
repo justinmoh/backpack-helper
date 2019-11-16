@@ -33,7 +33,7 @@ abstract class CrudHelper implements Arrayable
 
 
     /**
-     * @param string $prefix
+     * @param  string  $prefix
      *
      * @return $this
      */
@@ -46,7 +46,7 @@ abstract class CrudHelper implements Arrayable
 
 
     /**
-     * @param string $modelClass
+     * @param  string  $modelClass
      *
      * @return $this
      */
@@ -59,7 +59,7 @@ abstract class CrudHelper implements Arrayable
 
 
     /**
-     * @param string $foreignKeyAttribute
+     * @param  string  $foreignKeyAttribute
      *
      * @return $this
      */
@@ -72,7 +72,7 @@ abstract class CrudHelper implements Arrayable
 
 
     /**
-     * @param string $relationMethod
+     * @param  string  $relationMethod
      *
      * @return $this
      */
@@ -85,7 +85,7 @@ abstract class CrudHelper implements Arrayable
 
 
     /**
-     * @param array|callable $options
+     * @param  array|callable  $options
      *
      * @return $this
      */
@@ -104,7 +104,7 @@ abstract class CrudHelper implements Arrayable
     /**
      * Set the `Name` of component.
      *
-     * @param string $name
+     * @param  string  $name
      *
      * @return $this
      */
@@ -121,8 +121,8 @@ abstract class CrudHelper implements Arrayable
      * specified, use `snake_case` of `Label. If `Name` has already been set,
      * remains unchanged.
      *
-     * @param string      $label
-     * @param string|null $name
+     * @param  string  $label
+     * @param  string|null  $name
      *
      * @return $this
      */
@@ -142,8 +142,8 @@ abstract class CrudHelper implements Arrayable
      * Upon setting the `Type` of component, also accept a parameter as its
      * display `Label`.
      *
-     * @param string      $type
-     * @param string|null $label
+     * @param  string  $type
+     * @param  string|null  $label
      *
      * @return $this
      */
@@ -160,17 +160,13 @@ abstract class CrudHelper implements Arrayable
 
 
     /**
-     * @param string      $label
-     * @param string|null $name
-     * @param int         $widthOrPriority
+     * @param  string  $label
+     * @param  string|null  $name
+     * @param  int  $widthOrPriority
      *
      * @return static|$this
      */
-    abstract public function init(
-        string $label,
-        ?string $name = null,
-        $widthOrPriority = null
-    );
+    abstract public function init(string $label, ?string $name = null, $widthOrPriority = null);
 
 
     /**
@@ -192,16 +188,12 @@ abstract class CrudHelper implements Arrayable
             $nestedConfigs['wrapperAttributes'] = $this->wrapperAttributes;
         }
 
-        return array_merge(
-            compact('label', 'name', 'type'),
-            $nestedConfigs,
-            $this->crudConfigs
-        );
+        return array_merge(compact('label', 'name', 'type'), $nestedConfigs, $this->crudConfigs);
     }
 
 
     /**
-     * @param array $crudConfigs
+     * @param  array  $crudConfigs
      *
      * @return $this
      */
@@ -214,8 +206,8 @@ abstract class CrudHelper implements Arrayable
 
 
     /**
-     * @param array $attributes
-     * @param bool  $replace
+     * @param  array  $attributes
+     * @param  bool  $replace
      *
      * @return $this
      */
@@ -230,8 +222,8 @@ abstract class CrudHelper implements Arrayable
 
 
     /**
-     * @param array $wrapperAttributes
-     * @param bool  $replace
+     * @param  array  $wrapperAttributes
+     * @param  bool  $replace
      *
      * @return $this
      */

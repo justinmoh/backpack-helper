@@ -11,11 +11,9 @@ class CrudColumn extends CrudHelper
     {
         if ($this->type === 'textarea') {
             $this->type = 'closure';
-            $this->function(
-                function ($entry) {
-                    return nl2br($entry->{$this->name});
-                }
-            );
+            $this->function(function ($entry) {
+                return nl2br($entry->{$this->name});
+            });
         }
 
         switch (strtolower($this->type)) {
@@ -26,7 +24,7 @@ class CrudColumn extends CrudHelper
 
 
     /**
-     * @param callable $function
+     * @param  callable  $function
      *
      * @return $this
      */
@@ -39,7 +37,7 @@ class CrudColumn extends CrudHelper
 
 
     /**
-     * @param int $priority
+     * @param  int  $priority
      *
      * @return $this
      */
@@ -52,9 +50,9 @@ class CrudColumn extends CrudHelper
 
 
     /**
-     * @param string      $label
-     * @param string|null $name
-     * @param int|null    $priority
+     * @param  string  $label
+     * @param  string|null  $name
+     * @param  int|null  $priority
      *
      * @return static|$this
      */
@@ -71,7 +69,7 @@ class CrudColumn extends CrudHelper
 
 
     /**
-     * @param array $extraConfigs
+     * @param  array  $extraConfigs
      *
      * @return \Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade
      */
@@ -86,7 +84,7 @@ class CrudColumn extends CrudHelper
 
 
     /**
-     * @param array $extraConfigs
+     * @param  array  $extraConfigs
      *
      * @return array
      */

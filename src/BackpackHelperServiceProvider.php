@@ -20,6 +20,7 @@ use JustinMoh\BackpackHelper\Facades\Fields\DatetimePickerField;
 use JustinMoh\BackpackHelper\Facades\Fields\EmailField;
 use JustinMoh\BackpackHelper\Facades\Fields\HiddenField;
 use JustinMoh\BackpackHelper\Facades\Fields\NumberField;
+use JustinMoh\BackpackHelper\Facades\Fields\PasswordField;
 use JustinMoh\BackpackHelper\Facades\Fields\RadioField;
 use JustinMoh\BackpackHelper\Facades\Fields\Select2Field;
 use JustinMoh\BackpackHelper\Facades\Fields\Select2FromArrayField;
@@ -43,10 +44,7 @@ class BackpackHelperServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->mergeConfigFrom(
-            __DIR__.'/../config/backpack-helper.php',
-            'backpack-helper'
-        );
+        $this->mergeConfigFrom(__DIR__.'/../config/backpack-helper.php', 'backpack-helper');
 
         $this->registerFieldFacades();
         $this->registerColumnFacades();
@@ -56,201 +54,113 @@ class BackpackHelperServiceProvider extends ServiceProvider
 
     protected function registerFilterFacades()
     {
-        $this->app->bind(
-            CrudFilterFacade::class,
-            function () {
-                return new CrudFilter();
-            }
-        );
+        $this->app->bind(CrudFilterFacade::class, function () {
+            return new CrudFilter();
+        });
 
-
-        $this->app->bind(
-            DateRangeFilter::class,
-            function () {
-                return new CrudFilter('date_range');
-            }
-        );
-        $this->app->bind(
-            Select2MultipleFilter::class,
-            function () {
-                return new CrudFilter('select2_multiple');
-            }
-        );
-        $this->app->bind(
-            SimpleFilter::class,
-            function () {
-                return new CrudFilter('simple');
-            }
-        );
+        $this->app->bind(DateRangeFilter::class, function () {
+            return new CrudFilter('date_range');
+        });
+        $this->app->bind(Select2MultipleFilter::class, function () {
+            return new CrudFilter('select2_multiple');
+        });
+        $this->app->bind(SimpleFilter::class, function () {
+            return new CrudFilter('simple');
+        });
     }
 
 
     protected function registerColumnFacades()
     {
-        $this->app->bind(
-            CrudColumnFacade::class,
-            function () {
-                return new CrudColumn();
-            }
-        );
+        $this->app->bind(CrudColumnFacade::class, function () {
+            return new CrudColumn();
+        });
 
-
-        $this->app->bind(
-            BooleanColumn::class,
-            function () {
-                return new CrudColumn('boolean');
-            }
-        );
-        $this->app->bind(
-            ClosureColumn::class,
-            function () {
-                return new CrudColumn('closure');
-            }
-        );
-        $this->app->bind(
-            DateColumn::class,
-            function () {
-                return new CrudColumn('date');
-            }
-        );
-        $this->app->bind(
-            DatetimeColumn::class,
-            function () {
-                return new CrudColumn('datetime');
-            }
-        );
-        $this->app->bind(
-            NumberColumn::class,
-            function () {
-                return new CrudColumn('number');
-            }
-        );
-        $this->app->bind(
-            SelectColumn::class,
-            function () {
-                return new CrudColumn('select');
-            }
-        );
-        $this->app->bind(
-            SelectMultipleColumn::class,
-            function () {
-                return new CrudColumn('select_multiple');
-            }
-        );
-        $this->app->bind(
-            TextColumn::class,
-            function () {
-                return new CrudColumn('text');
-            }
-        );
-        $this->app->bind(
-            TextareaColumn::class,
-            function () {
-                return new CrudColumn('textarea');
-            }
-        );
-        $this->app->bind(
-            UploadMultipleColumn::class,
-            function () {
-                return new CrudColumn('upload_multiple');
-            }
-        );
+        $this->app->bind(BooleanColumn::class, function () {
+            return new CrudColumn('boolean');
+        });
+        $this->app->bind(ClosureColumn::class, function () {
+            return new CrudColumn('closure');
+        });
+        $this->app->bind(DateColumn::class, function () {
+            return new CrudColumn('date');
+        });
+        $this->app->bind(DatetimeColumn::class, function () {
+            return new CrudColumn('datetime');
+        });
+        $this->app->bind(NumberColumn::class, function () {
+            return new CrudColumn('number');
+        });
+        $this->app->bind(SelectColumn::class, function () {
+            return new CrudColumn('select');
+        });
+        $this->app->bind(SelectMultipleColumn::class, function () {
+            return new CrudColumn('select_multiple');
+        });
+        $this->app->bind(TextColumn::class, function () {
+            return new CrudColumn('text');
+        });
+        $this->app->bind(TextareaColumn::class, function () {
+            return new CrudColumn('textarea');
+        });
+        $this->app->bind(UploadMultipleColumn::class, function () {
+            return new CrudColumn('upload_multiple');
+        });
     }
 
 
     protected function registerFieldFacades()
     {
-        $this->app->bind(
-            CrudFieldFacade::class,
-            function () {
-                return new CrudField();
-            }
-        );
+        $this->app->bind(CrudFieldFacade::class, function () {
+            return new CrudField();
+        });
 
-        $this->app->bind(
-            DatePickerField::class,
-            function () {
-                return new CrudField('date_picker');
-            }
-        );
-        $this->app->bind(
-            DatetimePickerField::class,
-            function () {
-                return new CrudField('datetime_picker');
-            }
-        );
-        $this->app->bind(
-            EmailField::class,
-            function () {
-                return new CrudField('email');
-            }
-        );
-        $this->app->bind(
-            HiddenField::class,
-            function () {
-                return new CrudField('hidden');
-            }
-        );
-        $this->app->bind(
-            NumberField::class,
-            function () {
-                return new CrudField('number');
-            }
-        );
-        $this->app->bind(
-            RadioField::class,
-            function () {
-                return new CrudField('radio');
-            }
-        );
-        $this->app->bind(
-            SelectField::class,
-            function () {
-                return new CrudField('select');
-            }
-        );
-        $this->app->bind(
-            Select2Field::class,
-            function () {
-                return new CrudField('select2');
-            }
-        );
-        $this->app->bind(
-            Select2MultipleField::class,
-            function () {
-                return new CrudField('select2_multiple');
-            }
-        );
-        $this->app->bind(
-            Select2FromArrayField::class,
-            function () {
-                return new CrudField('select2_from_array');
-            }
-        );
-        $this->app->bind(
-            SelectFromArrayField::class,
-            function () {
-                return new CrudField('select_from_array');
-            }
-        );
-        $this->app->bind(
-            TextareaField::class,
-            function () {
-                return new CrudField('textarea');
-            }
-        );
-        $this->app->bind(
-            TextField::class,
-            function () {
-                return new CrudField('text');
-            }
-        );
-        $this->app->bind(
-            UploadMultipleField::class,
-            function () {
-                return new CrudField('upload_multiple');
-            }
-        );
+
+        $this->app->bind(DatePickerField::class, function () {
+            return new CrudField('date_picker');
+        });
+        $this->app->bind(DatetimePickerField::class, function () {
+            return new CrudField('datetime_picker');
+        });
+        $this->app->bind(EmailField::class, function () {
+            return new CrudField('email');
+        });
+        $this->app->bind(HiddenField::class, function () {
+            return new CrudField('hidden');
+        });
+        $this->app->bind(NumberField::class, function () {
+            return new CrudField('number');
+        });
+        $this->app->bind(PasswordField::class, function () {
+            return new CrudField('password');
+        });
+        $this->app->bind(RadioField::class, function () {
+            return new CrudField('radio');
+        });
+        $this->app->bind(SelectField::class, function () {
+            return new CrudField('select');
+        });
+        $this->app->bind(Select2Field::class, function () {
+            return new CrudField('select2');
+        });
+        $this->app->bind(Select2MultipleField::class, function () {
+            return new CrudField('select2_multiple');
+        });
+        $this->app->bind(Select2FromArrayField::class, function () {
+            return new CrudField('select2_from_array');
+        });
+        $this->app->bind(SelectFromArrayField::class, function () {
+            return new CrudField('select_from_array');
+        });
+        $this->app->bind(TextareaField::class, function () {
+            return new CrudField('textarea');
+        });
+        $this->app->bind(TextField::class, function () {
+            return new CrudField('text');
+        });
+        $this->app->bind(UploadMultipleField::class, function () {
+            return new CrudField('upload_multiple');
+        });
     }
 
 
@@ -293,10 +203,7 @@ class BackpackHelperServiceProvider extends ServiceProvider
     {
         // Publishing the configuration file.
         $this->publishes(
-            [
-                __DIR__.'/../config/backpack-helper.php'
-                => config_path('backpack-helper.php'),
-            ],
+            [__DIR__.'/../config/backpack-helper.php' => config_path('backpack-helper.php')],
             'backpack-helper.config'
         );
 

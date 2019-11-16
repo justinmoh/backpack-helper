@@ -8,15 +8,14 @@ use DB;
 /**
  * Trait CrudRequestsHandler
  * @package Justinmoh\BackpackHelper\Traits
- *
  * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
  */
 trait CrudRequestsHandler
 {
 
     /**
-     * @param string|null $redirectUrl
-     * @param string|null $message
+     * @param  string|null  $redirectUrl
+     * @param  string|null  $message
      *
      * @return \Illuminate\Http\Response
      * @throws \Exception
@@ -54,7 +53,7 @@ trait CrudRequestsHandler
 
 
     /**
-     * @param string|null $message
+     * @param  string|null  $message
      */
     protected function flashMessageIntoBackpackAlert($message = null): void
     {
@@ -72,8 +71,8 @@ trait CrudRequestsHandler
 
 
     /**
-     * @param \Illuminate\Database\Eloquent\Model $item
-     * @param string|null                         $redirectUrl
+     * @param  \Illuminate\Database\Eloquent\Model  $item
+     * @param  string|null  $redirectUrl
      *
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */

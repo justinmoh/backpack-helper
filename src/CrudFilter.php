@@ -23,9 +23,9 @@ class CrudFilter extends CrudHelper
      * This is intended to be used for named facade, which has the `Type`
      * already specified.
      *
-     * @param string      $label
-     * @param string|null $name
-     * @param null        $na
+     * @param  string  $label
+     * @param  string|null  $name
+     * @param  null  $na
      *
      * @return $this
      */
@@ -44,7 +44,7 @@ class CrudFilter extends CrudHelper
 
 
     /**
-     * @param callable|null $closure
+     * @param  callable|null  $closure
      *
      * @return $this
      */

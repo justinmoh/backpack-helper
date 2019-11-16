@@ -15,17 +15,6 @@ class CrudField extends CrudHelper
             ? ['class' => 'form-group col-md-'.$this->width]
             : [];
 
-//        if (in_array($this->type, ['upload_multiple'])) {
-//            $this->mergeConfigs(['upload' => true]);
-//            $defaultWrapperAttrs = array_merge(
-//                $defaultWrapperAttrs,
-//                [
-//                    'data-init-function' => 'bpFieldInitUploadMultipleElement',
-//                    'data-field-name' => $this->name,
-//                ]
-//            );
-//        }
-
         $this->mergeWrapperAttributes($defaultWrapperAttrs);
 
         switch (strtolower($this->type)) {
@@ -52,7 +41,7 @@ class CrudField extends CrudHelper
 
 
     /**
-     * @param int $rows
+     * @param  int  $rows
      *
      * @return $this
      */
@@ -97,10 +86,7 @@ class CrudField extends CrudHelper
         $defaultDatetimePickerOptions = ['format' => 'YYYY-MM-DD HH:mm'];
 
         $this->mergeConfigs(
-            [
-                'datetime_picker_options' =>
-                    array_merge($defaultDatetimePickerOptions, $options),
-            ]
+            ['datetime_picker_options' => array_merge($defaultDatetimePickerOptions, $options)]
         );
 
         return $this;
@@ -110,7 +96,7 @@ class CrudField extends CrudHelper
     /**
      * todo: handle readonly for select / multiselect etc
      *
-     * @param bool $readonly
+     * @param  bool  $readonly
      *
      * @return $this
      */
@@ -125,7 +111,7 @@ class CrudField extends CrudHelper
 
 
     /**
-     * @param bool $disabled
+     * @param  bool  $disabled
      *
      * @return $this
      */
@@ -140,7 +126,7 @@ class CrudField extends CrudHelper
 
 
     /**
-     * @param string $placeholderText
+     * @param  string  $placeholderText
      *
      * @return $this
      */
@@ -153,8 +139,8 @@ class CrudField extends CrudHelper
 
 
     /**
-     * @param string      $hintText
-     * @param string|null $type
+     * @param  string  $hintText
+     * @param  string|null  $type
      *
      * @return $this
      */
@@ -178,7 +164,7 @@ class CrudField extends CrudHelper
 
 
     /**
-     * @param bool $inline
+     * @param  bool  $inline
      *
      * @return $this
      */
@@ -204,7 +190,7 @@ class CrudField extends CrudHelper
 
 
     /**
-     * @param bool $required
+     * @param  bool  $required
      *
      * @return $this
      */
@@ -217,7 +203,7 @@ class CrudField extends CrudHelper
 
 
     /**
-     * @param string $tab
+     * @param  string  $tab
      *
      * @return $this
      */
@@ -229,6 +215,11 @@ class CrudField extends CrudHelper
     }
 
 
+    /**
+     * @param $width
+     *
+     * @return $this
+     */
     public function width($width)
     {
         $this->width = $width;
@@ -238,9 +229,9 @@ class CrudField extends CrudHelper
 
 
     /**
-     * @param string      $label
-     * @param string|null $name
-     * @param int|null    $width
+     * @param  string  $label
+     * @param  string|null  $name
+     * @param  int|null  $width
      *
      * @return static|$this
      */
@@ -257,7 +248,7 @@ class CrudField extends CrudHelper
 
 
     /**
-     * @param array $extraConfigs
+     * @param  array  $extraConfigs
      *
      * @return \Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade
      */
@@ -272,7 +263,7 @@ class CrudField extends CrudHelper
 
 
     /**
-     * @param array $extraConfigs
+     * @param  array  $extraConfigs
      *
      * @return array
      */
@@ -282,6 +273,5 @@ class CrudField extends CrudHelper
 
         return array_merge($this->toArray(), $extraConfigs);
     }
-
 
 }
