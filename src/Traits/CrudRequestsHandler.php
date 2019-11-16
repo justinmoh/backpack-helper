@@ -14,13 +14,12 @@ trait CrudRequestsHandler
 {
 
     /**
+     * @param  bool  $defaultMessage
      * @param  string|null  $redirectUrl
-     * @param  string|null  $message
      *
      * @return \Illuminate\Http\Response
-     * @throws \Exception
      */
-    protected function validateAndPersist($message = null, $redirectUrl = null)
+    protected function validateAndPersist($defaultMessage = true, $redirectUrl = null)
     {
         // execute the FormRequest authorization and validation, if one is required
         $request = $this->crud->validateRequest();
@@ -32,7 +31,7 @@ trait CrudRequestsHandler
 
             $this->data['entry'] = $this->crud->entry = $item;
 
-            $this->flashMessageIntoBackpackAlert($message);
+            $this->flashMessageIntoBackpackAlert($defaultMessage);
 
             DB::commit();
 
@@ -53,11 +52,22 @@ trait CrudRequestsHandler
 
 
     /**
-     * @param  string|null  $message
+     * @param  bool  $defaultMessage
      */
-    protected function flashMessageIntoBackpackAlert($message = null): void
+    protected function flashMessageIntoBackpackAlert(bool $defaultMessage): void
     {
-        if (empty($message)) {
+        if ($defaultMessage) {
+            switch ($this->crud->getActionMethod()) {
+                case 'create':
+                    $message = trans('backpack::crud.insert_success');
+                    break;
+                case 'update':
+                    $message = trans('backpack::crud.update_success');
+                    break;
+                default:
+                    $message = 'Action completed.';
+            }
+        } else {
             $details = [];
             foreach ($this->crud->getStrippedSaveRequest() as $field => $value) {
                 $value = json_encode($value);
