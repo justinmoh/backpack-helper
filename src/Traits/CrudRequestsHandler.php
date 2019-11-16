@@ -58,7 +58,7 @@ trait CrudRequestsHandler
     {
         if ($defaultMessage) {
             switch ($this->crud->getActionMethod()) {
-                case 'create':
+                case 'store':
                     $message = trans('backpack::crud.insert_success');
                     break;
                 case 'update':
