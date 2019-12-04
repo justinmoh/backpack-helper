@@ -31,6 +31,7 @@ use JustinMoh\BackpackHelper\Facades\Fields\TextareaField;
 use JustinMoh\BackpackHelper\Facades\Fields\TextField;
 use JustinMoh\BackpackHelper\Facades\Fields\UploadMultipleField;
 use JustinMoh\BackpackHelper\Facades\Filters\DateRangeFilter;
+use JustinMoh\BackpackHelper\Facades\Filters\Select2Filter;
 use JustinMoh\BackpackHelper\Facades\Filters\Select2MultipleFilter;
 use JustinMoh\BackpackHelper\Facades\Filters\SimpleFilter;
 use Illuminate\Support\ServiceProvider;
@@ -60,6 +61,9 @@ class BackpackHelperServiceProvider extends ServiceProvider
 
         $this->app->bind(DateRangeFilter::class, function () {
             return new CrudFilter('date_range');
+        });
+        $this->app->bind(Select2Filter::class, function () {
+            return new CrudFilter('select2');
         });
         $this->app->bind(Select2MultipleFilter::class, function () {
             return new CrudFilter('select2_multiple');
