@@ -61,6 +61,19 @@ class CrudFilter extends CrudHelper
 
 
     /**
+     * @param  string  $label
+     * @param  string  $scopeName
+     */
+    public static function simple($label, $scopeName)
+    {
+        SimpleFilter::init($label, Str::slug($label, '_'))
+            ->query(function () use ($scopeName) {
+                CRUD::addClause($scopeName);
+            })->toFilter();
+    }
+
+
+    /**
      * This is intended to be used for named facade, which has the `Type`
      * already specified.
      *
