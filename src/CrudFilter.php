@@ -3,6 +3,8 @@
 namespace JustinMoh\BackpackHelper;
 
 use CRUD;
+use Illuminate\Support\Str;
+use JustinMoh\BackpackHelper\Facades\Filters\SimpleFilter;
 
 class CrudFilter extends CrudHelper
 {
@@ -16,6 +18,45 @@ class CrudFilter extends CrudHelper
     public function __construct($type = 'simple')
     {
         parent::__construct($type);
+    }
+
+
+    /**
+     * @param  string  $label
+     * @param  string  $scope
+     */
+    public static function onlyInactive($label = 'Only Inactive', $scope = 'ofInactive')
+    {
+        SimpleFilter::init($label, Str::slug($label, '_'))
+            ->query(function () use ($scope) {
+                CRUD::addClause($scope);
+            })->toFilter();
+    }
+
+
+    /**
+     * @param  string  $label
+     * @param  string  $scope
+     */
+    public static function onlyActive($label = 'Only Active', $scope = 'ofActive')
+    {
+        SimpleFilter::init($label, Str::slug($label, '_'))
+            ->query(function () use ($scope) {
+                CRUD::addClause($scope);
+            })->toFilter();
+    }
+
+
+    /**
+     * @param  string  $label
+     * @param  string  $scope
+     */
+    public static function onlyTrashed($label = 'Show Deleted', $scope = 'onlyTrashed')
+    {
+        SimpleFilter::init($label, Str::slug($label, '_'))
+            ->query(function () use ($scope) {
+                CRUD::addClause($scope);
+            })->toFilter();
     }
 
 
