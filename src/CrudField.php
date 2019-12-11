@@ -25,16 +25,16 @@ class CrudField extends CrudHelper
                 $this->datePickerOptions();
                 break;
             case 'textarea':
-                $this->rows(5);
+                if (!isset($this->crudConfigs['rows'])) {
+                    $this->rows(5);
+                }
                 break;
             case 'upload_multiple':
                 $this->mergeConfigs(['upload' => true, 'disk' => 'public']);
-                $this->mergeWrapperAttributes(
-                    [
-                        'data-init-function' => 'bpFieldInitUploadMultipleElement',
-                        'data-field-name' => $this->name,
-                    ]
-                );
+                $this->mergeWrapperAttributes([
+                    'data-init-function' => 'bpFieldInitUploadMultipleElement',
+                    'data-field-name' => $this->name,
+                ]);
                 break;
         }
     }
@@ -60,13 +60,16 @@ class CrudField extends CrudHelper
      */
     public function datePickerOptions($options = [])
     {
-        $defaultDatePickerOptions = [
-            'format' => 'yyyy-mm-dd',
-            'todayBtn' => 'linked',
-            'todayHighlight' => true,
-            'autoclose' => true,
-            'clearBtn' => true,
-        ];
+        $defaultDatePickerOptions = array_merge(
+            [
+                'format' => 'yyyy-mm-dd',
+                'todayBtn' => 'linked',
+                'todayHighlight' => true,
+                'autoclose' => true,
+                'clearBtn' => true,
+            ],
+            $this->crudConfigs['date_picker_options'] ?? []
+        );
 
         $this->mergeConfigs(
             ['date_picker_options' => array_merge($defaultDatePickerOptions, $options)]
@@ -83,7 +86,10 @@ class CrudField extends CrudHelper
      */
     public function datetimePickerOptions($options)
     {
-        $defaultDatetimePickerOptions = ['format' => 'YYYY-MM-DD HH:mm'];
+        $defaultDatetimePickerOptions = array_merge(
+            ['format' => 'YYYY-MM-DD HH:mm'],
+            $this->crudConfigs['datetime_picker_options'] ?? []
+        );
 
         $this->mergeConfigs(
             ['datetime_picker_options' => array_merge($defaultDatetimePickerOptions, $options)]
