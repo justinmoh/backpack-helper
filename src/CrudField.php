@@ -87,7 +87,7 @@ class CrudField extends CrudHelper
     public function datetimePickerOptions($options)
     {
         $defaultDatetimePickerOptions = array_merge(
-            ['format' => 'YYYY-MM-DD HH:mm'],
+            ['format' => 'YYYY-MM-DD HH:mm', 'showTodayButton' => true],
             $this->crudConfigs['datetime_picker_options'] ?? []
         );
 
