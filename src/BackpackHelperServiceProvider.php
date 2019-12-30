@@ -9,6 +9,7 @@ use JustinMoh\BackpackHelper\Facades\Columns\DatetimeColumn;
 use JustinMoh\BackpackHelper\Facades\Columns\NumberColumn;
 use JustinMoh\BackpackHelper\Facades\Columns\SelectColumn;
 use JustinMoh\BackpackHelper\Facades\Columns\SelectMultipleColumn;
+use JustinMoh\BackpackHelper\Facades\Columns\TableColumn;
 use JustinMoh\BackpackHelper\Facades\Columns\TextareaColumn;
 use JustinMoh\BackpackHelper\Facades\Columns\TextColumn;
 use JustinMoh\BackpackHelper\Facades\Columns\UploadMultipleColumn;
@@ -27,6 +28,7 @@ use JustinMoh\BackpackHelper\Facades\Fields\Select2FromArrayField;
 use JustinMoh\BackpackHelper\Facades\Fields\Select2MultipleField;
 use JustinMoh\BackpackHelper\Facades\Fields\SelectField;
 use JustinMoh\BackpackHelper\Facades\Fields\SelectFromArrayField;
+use JustinMoh\BackpackHelper\Facades\Fields\TableField;
 use JustinMoh\BackpackHelper\Facades\Fields\TextareaField;
 use JustinMoh\BackpackHelper\Facades\Fields\TextField;
 use JustinMoh\BackpackHelper\Facades\Fields\UploadMultipleField;
@@ -101,6 +103,9 @@ class BackpackHelperServiceProvider extends ServiceProvider
         $this->app->bind(SelectMultipleColumn::class, function () {
             return new CrudColumn('select_multiple');
         });
+        $this->app->bind(TableColumn::class, function () {
+            return new CrudColumn('table');
+        });
         $this->app->bind(TextColumn::class, function () {
             return new CrudColumn('text');
         });
@@ -122,6 +127,9 @@ class BackpackHelperServiceProvider extends ServiceProvider
 
         $this->app->bind(DatePickerField::class, function () {
             return new CrudField('date_picker');
+        });
+        $this->app->bind(DateRangeFilter::class, function () {
+            return new CrudField('date_range');
         });
         $this->app->bind(DatetimePickerField::class, function () {
             return new CrudField('datetime_picker');
@@ -155,6 +163,9 @@ class BackpackHelperServiceProvider extends ServiceProvider
         });
         $this->app->bind(SelectFromArrayField::class, function () {
             return new CrudField('select_from_array');
+        });
+        $this->app->bind(TableField::class, function () {
+            return new CrudField('table');
         });
         $this->app->bind(TextareaField::class, function () {
             return new CrudField('textarea');

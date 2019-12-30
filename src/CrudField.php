@@ -24,6 +24,9 @@ class CrudField extends CrudHelper
             case 'date_picker':
                 $this->datePickerOptions();
                 break;
+            case 'date_range':
+                $this->dateRangeOptions();
+                break;
             case 'textarea':
                 if (!isset($this->crudConfigs['rows'])) {
                     $this->rows(5);
@@ -37,6 +40,76 @@ class CrudField extends CrudHelper
                 ]);
                 break;
         }
+    }
+
+
+    public function dateRangeOptions($options = [])
+    {
+        $dateRangeOptionDefaults = array_merge(
+            [
+                'timePicker' => false,
+                'locale' => ['format' => 'YYYY-MM-DD'],
+            ],
+            $this->crudConfigs['date_range_options'] ?? []
+        );
+
+        $this->mergeConfigs(
+            ['date_range_options' => array_merge($dateRangeOptionDefaults, $options)]
+        );
+
+        return $this;
+    }
+
+
+    /**
+     * @param  int  $tableFieldMaxRow
+     *
+     * @return $this
+     */
+    public function max(int $tableFieldMaxRow)
+    {
+        $this->mergeAttributes(['max' => $tableFieldMaxRow]);
+
+        return $this;
+    }
+
+
+    /**
+     * @param  int  $tableFieldMinRow
+     *
+     * @return $this
+     */
+    public function min(int $tableFieldMinRow)
+    {
+        $this->mergeAttributes(['min' => $tableFieldMinRow]);
+
+        return $this;
+    }
+
+
+    /**
+     * @param  array  $columns
+     *
+     * @return $this
+     */
+    public function columns(array $columns)
+    {
+        $this->mergeAttributes(compact('columns'));
+
+        return $this;
+    }
+
+
+    /**
+     * @param  string  $singularName
+     *
+     * @return $this
+     */
+    public function entitySingular(string $singularName)
+    {
+        $this->mergeAttributes(['entity_singular' => $singularName]);
+
+        return $this;
     }
 
 

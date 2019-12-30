@@ -24,6 +24,19 @@ class CrudColumn extends CrudHelper
 
 
     /**
+     * @param  array  $columns
+     *
+     * @return $this
+     */
+    public function columns(array $columns)
+    {
+        $this->mergeConfigs(compact('columns'));
+
+        return $this;
+    }
+
+
+    /**
      * @param  callable  $function
      *
      * @return $this
@@ -90,7 +103,7 @@ class CrudColumn extends CrudHelper
      */
     public function test($extraConfigs = [])
     {
-        $this->setDefaultColumnConfigs();;
+        $this->setDefaultColumnConfigs();
 
         return array_merge($this->toArray(), $extraConfigs);
     }
