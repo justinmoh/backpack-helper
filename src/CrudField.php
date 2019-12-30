@@ -68,7 +68,7 @@ class CrudField extends CrudHelper
      */
     public function max(int $tableFieldMaxRow)
     {
-        $this->mergeAttributes(['max' => $tableFieldMaxRow]);
+        $this->mergeConfigs(['max' => $tableFieldMaxRow]);
 
         return $this;
     }
@@ -81,7 +81,7 @@ class CrudField extends CrudHelper
      */
     public function min(int $tableFieldMinRow)
     {
-        $this->mergeAttributes(['min' => $tableFieldMinRow]);
+        $this->mergeConfigs(['min' => $tableFieldMinRow]);
 
         return $this;
     }
@@ -94,7 +94,7 @@ class CrudField extends CrudHelper
      */
     public function columns(array $columns)
     {
-        $this->mergeAttributes(compact('columns'));
+        $this->mergeConfigs(compact('columns'));
 
         return $this;
     }
@@ -107,7 +107,7 @@ class CrudField extends CrudHelper
      */
     public function entitySingular(string $singularName)
     {
-        $this->mergeAttributes(['entity_singular' => $singularName]);
+        $this->mergeConfigs(['entity_singular' => $singularName]);
 
         return $this;
     }
