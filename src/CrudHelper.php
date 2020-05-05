@@ -18,7 +18,7 @@ abstract class CrudHelper implements Arrayable
     protected $name;
 
     protected $attributes = [];
-    protected $wrapperAttributes = [];
+    protected $wrapper = [];
 
     protected $crudConfigs = [];
 
@@ -184,8 +184,8 @@ abstract class CrudHelper implements Arrayable
         if (!empty($this->attributes)) {
             $nestedConfigs['attributes'] = $this->attributes;
         }
-        if (!empty($this->wrapperAttributes)) {
-            $nestedConfigs['wrapperAttributes'] = $this->wrapperAttributes;
+        if (!empty($this->wrapper)) {
+            $nestedConfigs['wrapper'] = $this->wrapper;
         }
 
         return array_merge(compact('label', 'name', 'type'), $nestedConfigs, $this->crudConfigs);
@@ -222,16 +222,16 @@ abstract class CrudHelper implements Arrayable
 
 
     /**
-     * @param  array  $wrapperAttributes
+     * @param  array  $wrapper
      * @param  bool  $replace
      *
      * @return $this
      */
-    public function mergeWrapperAttributes(array $wrapperAttributes, $replace = false)
+    public function mergeWrapperAttributes(array $wrapper, $replace = false)
     {
-        $this->wrapperAttributes = $replace
-            ? $wrapperAttributes
-            : array_merge($this->wrapperAttributes, $wrapperAttributes);
+        $this->wrapper = $replace
+            ? $wrapper
+            : array_merge($this->wrapper, $wrapper);
 
         return $this;
     }
