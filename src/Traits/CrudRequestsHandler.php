@@ -35,6 +35,8 @@ trait CrudRequestsHandler
 
             DB::commit();
 
+            $redirectUrl = $redirectUrl ?? $request->get('http_referrer', request('back_url'));
+
             return $this->redirectResponse($item, $redirectUrl)
                 ->with('alert_messages', Alert::messages());
 
