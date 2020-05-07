@@ -48,6 +48,10 @@ class BackpackHelperServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        app()->extend('crud', function ($service, $app) {
+            return new CrudPanel($app);
+        });
+
         $this->mergeConfigFrom(__DIR__.'/../config/backpack-helper.php', 'backpack-helper');
 
         $this->registerFieldFacades();
