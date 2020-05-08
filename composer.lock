@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "760a072fb89b41325c9b82c17fee753e",
+    "content-hash": "b2204a65a04388e1a9e515f62f581fb7",
     "packages": [
         {
             "name": "backpack/crud",
-            "version": "4.1.x-dev",
+            "version": "4.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Laravel-Backpack/CRUD.git",
-                "reference": "00150a6e5c7e527d2f3121730dcf8ed4dcc2b6b9"
+                "reference": "d0612499fa22d91f7302594313c60880c41c1180"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Laravel-Backpack/CRUD/zipball/00150a6e5c7e527d2f3121730dcf8ed4dcc2b6b9",
-                "reference": "00150a6e5c7e527d2f3121730dcf8ed4dcc2b6b9",
+                "url": "https://api.github.com/repos/Laravel-Backpack/CRUD/zipball/d0612499fa22d91f7302594313c60880c41c1180",
+                "reference": "d0612499fa22d91f7302594313c60880c41c1180",
                 "shasum": ""
             },
             "require": {
@@ -25,7 +25,6 @@
                 "doctrine/dbal": "^2.5",
                 "guzzlehttp/guzzle": "^6.3",
                 "laravel/framework": "^7.0|^6.0",
-                "nesbot/carbon": "^2.14",
                 "ocramius/package-versions": "^1.4",
                 "prologue/alerts": "^0.4.1"
             },
@@ -89,7 +88,7 @@
                 "read",
                 "update"
             ],
-            "time": "2020-05-04T11:00:14+00:00"
+            "time": "2020-05-06T16:10:35+00:00"
         },
         {
             "name": "brick/math",
@@ -895,16 +894,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v7.9.2",
+            "version": "v7.10.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "757b155658ae6da429065ba8f22242fe599824f7"
+                "reference": "6e927e78aafd578d59c99608e7f0e23a5f7bfc5a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/757b155658ae6da429065ba8f22242fe599824f7",
-                "reference": "757b155658ae6da429065ba8f22242fe599824f7",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/6e927e78aafd578d59c99608e7f0e23a5f7bfc5a",
+                "reference": "6e927e78aafd578d59c99608e7f0e23a5f7bfc5a",
                 "shasum": ""
             },
             "require": {
@@ -1043,7 +1042,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2020-04-28T16:09:20+00:00"
+            "time": "2020-05-06T15:36:00+00:00"
         },
         {
             "name": "league/commonmark",
@@ -5506,22 +5505,13 @@
             "time": "2020-04-18T12:12:48+00:00"
         }
     ],
-    "aliases": [
-        {
-            "alias": "4.0.99",
-            "alias_normalized": "4.0.99.0",
-            "version": "4.1.9999999.9999999-dev",
-            "package": "backpack/crud"
-        }
-    ],
+    "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "backpack/crud": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": "^7.3"
+        "php": "^7.2.5"
     },
     "platform-dev": [],
     "plugin-api-version": "1.1.0"
