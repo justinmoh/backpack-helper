@@ -7,7 +7,7 @@ use CRUD;
 class CrudColumn extends CrudHelper
 {
 
-    protected function setDefaultColumnConfigs(): void
+    protected function setDefaultConfigs(): void
     {
         if ($this->type === 'textarea') {
             $this->type = 'closure';
@@ -88,24 +88,6 @@ class CrudColumn extends CrudHelper
      */
     public function toColumn($extraConfigs = [])
     {
-        $this->setDefaultColumnConfigs();
-
-        $configs = array_merge($this->toArray(), $extraConfigs);
-
-        return CRUD::addColumn($configs);
+        return CRUD::addColumn($this->toArray($extraConfigs));
     }
-
-
-    /**
-     * @param  array  $extraConfigs
-     *
-     * @return array
-     */
-    public function test($extraConfigs = [])
-    {
-        $this->setDefaultColumnConfigs();
-
-        return array_merge($this->toArray(), $extraConfigs);
-    }
-
 }

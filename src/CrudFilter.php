@@ -110,17 +110,8 @@ class CrudFilter extends CrudHelper
     }
 
 
-    /**
-     * Get the instance as an array.
-     *
-     * @return array
-     */
-    public function toArray()
+    protected function setDefaultConfigs(): void
     {
-        return [
-            'label' => $this->label,
-            'name' => $this->name,
-            'type' => $this->type,
-        ];
+        // no defaults
     }
 }

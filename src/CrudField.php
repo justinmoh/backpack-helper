@@ -9,11 +9,9 @@ class CrudField extends CrudHelper
     protected $width;
 
 
-    protected function setDefaultFieldConfigs(): void
+    protected function setDefaultConfigs(): void
     {
-        $defaultWrapperAttrs = $this->width
-            ? ['class' => 'form-group col-md-'.$this->width]
-            : [];
+        $defaultWrapperAttrs = ['class' => 'form-group col-md-'.($this->width ?? '12')];
 
         $this->mergeWrapperAttributes($defaultWrapperAttrs);
 
@@ -276,6 +274,11 @@ class CrudField extends CrudHelper
     public function required(bool $required = true)
     {
         $this->mergeAttributes(['required' => $required]);
+        $this->mergeConfigs(['showAsterisk' => $required]);
+
+        if ($required) {
+            $this->mergeWrapperAttributes(['class' => 'required']);
+        }
 
         return $this;
     }
@@ -333,24 +336,6 @@ class CrudField extends CrudHelper
      */
     public function toField($extraConfigs = [])
     {
-        $this->setDefaultFieldConfigs();
-
-        $configs = array_merge($this->toArray(), $extraConfigs);
-
-        return CRUD::addField($configs);
+        return CRUD::addField($this->toArray($extraConfigs));
     }
-
-
-    /**
-     * @param  array  $extraConfigs
-     *
-     * @return array
-     */
-    public function test($extraConfigs = [])
-    {
-        $this->setDefaultFieldConfigs();
-
-        return array_merge($this->toArray(), $extraConfigs);
-    }
-
 }

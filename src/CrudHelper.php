@@ -169,13 +169,20 @@ abstract class CrudHelper implements Arrayable
     abstract public function init(string $label, ?string $name = null, $widthOrPriority = null);
 
 
+    abstract protected function setDefaultConfigs(): void;
+
+
     /**
      * Get the instance as an array.
      *
+     * @param  array  $extraConfigs
+     *
      * @return array
      */
-    public function toArray()
+    public function toArray($extraConfigs = [])
     {
+        $this->setDefaultConfigs();;
+
         $label = $this->label;
         $name = $this->name;
         $type = $this->type;
@@ -188,7 +195,12 @@ abstract class CrudHelper implements Arrayable
             $nestedConfigs['wrapper'] = $this->wrapper;
         }
 
-        return array_merge(compact('label', 'name', 'type'), $nestedConfigs, $this->crudConfigs);
+        return array_merge(
+            compact('label', 'name', 'type'),
+            $nestedConfigs,
+            $this->crudConfigs,
+            $extraConfigs
+        );
     }
 
 
@@ -229,9 +241,16 @@ abstract class CrudHelper implements Arrayable
      */
     public function mergeWrapperAttributes(array $wrapper, $replace = false)
     {
-        $this->wrapper = $replace
-            ? $wrapper
-            : array_merge($this->wrapper, $wrapper);
+        if ($replace) {
+            $this->wrapper = $wrapper;
+        } else {
+            if (!empty($wrapper['class']) && !empty($this->wrapper['class'])) {
+                $existingClasses = explode(' ', $this->wrapper['class']);
+                $newClasses = explode(' ', $wrapper['class']);
+                $wrapper['class'] = implode(' ', array_merge($existingClasses, $newClasses));
+            }
+            $this->wrapper = array_merge($this->wrapper, $wrapper);
+        }
 
         return $this;
     }
