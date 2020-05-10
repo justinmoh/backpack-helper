@@ -11,7 +11,9 @@ class CrudField extends CrudHelper
 
     protected function setDefaultConfigs(): void
     {
-        $defaultWrapperAttrs = ['class' => 'form-group col-md-'.($this->width ?? '12')];
+        $defaultWrapperAttrs = $this->type === 'hidden'
+            ? []
+            : ['class' => 'form-group col-md-'.($this->width ?? '12')];
 
         $this->mergeWrapperAttributes($defaultWrapperAttrs);
 
